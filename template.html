@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>人大附中第十六届歌舞嘉年华·{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/vendor/css/mdui.min.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="content-in">
+        <div id="content">
+          <div class="mdui-card">
+            <h1 class="mdui-typo-headline">人大附中第十六届歌舞嘉年华·{{title}}</h1>
+            <div class="mdui-tab mdui-tab-full-width" id="top-nav">
+              <a href="#content" data-href="/" class="mdui-ripple">首页</a>
+              <a href="#content" data-href="/register/" class="mdui-ripple">注册</a>
+              <a href="#content" data-href="/dayi/" class="mdui-ripple">答疑</a>
+              <a href="#content" data-href="/csbmxz/" class="mdui-ripple">初赛报名细则</a>
+            </div>
+          </div>
+          {{content}}
+		  <div class="mdui-card" id="bottom-nav">
+		    <a href="https://www.rdfzsu.org/" class="no-underline">
+		      <img src="/img/su.svg" id="su-logo" />
+			</a>
+			<br />
+			<div id="bottom-links">
+		      <a target="_blank" href="https://github.com/RDFZSU/gejia.rdfzsu.org" class="no-underline">
+			    <img src="/img/github.svg" class="link-icon" />
+			  </a>
+			  &nbsp;|&nbsp;
+			  <a target="_blank" href="https://mp.weixin.qq.com/s/wOG1U_2PlzLZhrLVjezUDg" class="no-underline">
+			    <img src="/img/wechat.svg" class="link-icon" />
+			  </a>
+			</div>
+		  </div>
+        </div>
+      </div>
+    </div>
+    <script src="/vendor/js/mdui.min.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

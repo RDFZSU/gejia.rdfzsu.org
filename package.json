@@ -1,0 +1,15 @@
+{
+  "name": "gejia",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Alan-Liang",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "mime": "^2.3.1"
+  }
+}
