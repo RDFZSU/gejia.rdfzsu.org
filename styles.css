@@ -57,8 +57,8 @@ body{
 }
 
 .link-icon{
-  width:32px;
-  height:32px;
+  width:20px;
+  height:20px;
 }
 
 #bottom-nav{
@@ -67,9 +67,14 @@ body{
 }
 
 #bottom-links{
-  font-size:32px;
+  font-size:20px;
 }
 
 a.no-underline{
   text-decoration:none;
+}
+
+.pad-20{
+  padding-top:20px;
+  padding-bottom:20px;
 }
