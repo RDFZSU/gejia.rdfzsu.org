@@ -17,6 +17,7 @@ body{
   background-image: url(/img/background.jpg);
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
 }
 
 #wrapper{
@@ -74,7 +75,6 @@ a.no-underline{
   text-decoration:none;
 }
 
-.pad-20{
-  padding-top:20px;
-  padding-bottom:20px;
+.card{
+  padding:20px 10px 20px 10px;
 }
