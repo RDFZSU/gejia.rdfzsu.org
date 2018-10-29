@@ -50,7 +50,7 @@ body{
   position: relative;
   padding:3px;
   padding-bottom: 24px;
-  margin-top:100px;
+  margin-top:64px;
 }
 
 #su-logo{
@@ -77,4 +77,55 @@ a.no-underline{
 
 .card{
   padding:20px 10px 20px 10px;
+  text-align: left;
+}
+
+img{
+  text-align:center;
+}
+
+.red{
+  color:#cc0000;
+}
+
+.gray{
+  color:#666666;
+}
+
+.mdui-panel-item-header{
+  height:auto !important;
+  text-align: center !important;
+  display: block !important;
+}
+
+.mdui-panel-item.card{
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.mdui-panel-item-header>img, img.title{
+  width:40%;
+}
+
+@media(max-width:719px){
+  .mdui-panel-item-header>img, img.title{
+    width:256px;
+  }
+  img.about{
+    width:100% !important;
+  }
+}
+
+.subheading{
+  background: #ff0;
+  text-decoration: underline;
+  width:auto;
+}
+
+.center{
+  text-align: center;
+}
+
+img.about{
+  width:70%;
 }
