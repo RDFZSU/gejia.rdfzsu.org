@@ -109,10 +109,16 @@ img{
 
 @media(max-width:719px){
   .mdui-panel-item-header>img, img.title{
-    width:256px;
+    width:200px;
   }
   img.about{
     width:100% !important;
+  }
+}
+
+@media(min-width:720px){
+  .mdui-panel-item-arrow{
+    top: 24px !important;
   }
 }
 
@@ -128,4 +134,8 @@ img{
 
 img.about{
   width:70%;
+}
+
+.mdui-panel-item-arrow{
+  font-size:40px !important;
 }
