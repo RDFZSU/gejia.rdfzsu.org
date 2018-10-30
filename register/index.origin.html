@@ -5,6 +5,7 @@
 </div>
 <br />
 <script>
+// FIXME: jump on iOS because of bad logic of WebKit and WKWebView
 if(/iPhone OS/i.test(navigator.userAgent)){
   location=document.querySelector("iframe").getAttribute("src");
 }

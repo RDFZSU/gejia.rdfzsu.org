@@ -13,12 +13,12 @@
     <link rel="stylesheet" type="text/css" href="/styles.css" />
     <link rel="stylesheet" type="text/css" href="/vendor/css/mdui.min.css" />
   </head>
-  <body class="mdui-theme-primary-blue mdui-theme-accent-blue">
+  <body class="mdui-theme-primary-teal mdui-theme-accent-teal">
     <div id="wrapper">
       <div id="content-in">
         <div id="content">
           <div class="mdui-card">
-            <h1 class="mdui-typo-headline">人大附中第十六届歌舞嘉年华·缘</h1>
+            <h1 class="mdui-typo-headline" id="title">人大附中第十六届歌舞嘉年华·缘</h1>
             <div class="mdui-tab mdui-tab-full-width" id="top-nav">
               <a href="/" class="mdui-ripple">首页</a>
               <a href="/register/" class="mdui-ripple">报名</a>
@@ -32,6 +32,7 @@
 </div>
 <br />
 <script>
+// FIXME: jump on iOS because of bad logic of WebKit and WKWebView
 if(/iPhone OS/i.test(navigator.userAgent)){
   location=document.querySelector("iframe").getAttribute("src");
 }
