@@ -132,6 +132,10 @@ img{
   text-align: center;
 }
 
+.left{
+  text-align: left;
+}
+
 img.about{
   width:70%;
 }
@@ -150,4 +154,10 @@ img.about{
 
 #reg-late{
   display: none;
+}
+
+.mdui-card-media-covered{
+  padding-left:16px;
+  padding-top:10px;
+  padding-bottom:10px;
 }
