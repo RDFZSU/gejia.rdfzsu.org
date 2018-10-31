@@ -1,6 +1,6 @@
 var fs=require("fs");
 var template=require("./template");
-var files="index.origin.html|test/index.origin.html|register/index.origin.html".split("|");
+var files="index.origin.html|test/index.origin.html|register/index.origin.html|participant/template.origin.html".split("|");
 var htmlTemplate=fs.readFileSync(__dirname+"/template.html").toString();
 
 for (var i = 0; i < files.length; i++) {
@@ -23,3 +23,6 @@ for (var i = 0; i < files.length; i++) {
   fs.writeFileSync(files[i].replace(".origin.html",".html"),s);
   console.log(`${files[i]} generated.`);
 }
+
+//build participants
+require("./participant/build");
