@@ -147,3 +147,7 @@ img.about{
 #title{
   font-size:22px;
 }
+
+#reg-late{
+  display: none;
+}
