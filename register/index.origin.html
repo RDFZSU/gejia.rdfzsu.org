@@ -1,21 +1,7 @@
 报名
 <br />
 <div class="mdui-card">
-  <iframe id="reg-iframe" allowTransparency="true" style="height:720px;width:100%;border:none;overflow:auto;" frameborder="0" src="http://mikecrm.com/GDg3v1x"></iframe>
-  <div id="reg-late">
-    <h1 class="mdui-typo-headline">报名已截止</h1>
-    <h2 class="mdui-typo-subheading">明年歌嘉再见！</h2>
-  </div>
+  <h1 class="mdui-typo-headline">报名已截止</h1>
+  <h2 class="mdui-typo-subheading">明年歌嘉再见！</h2>
 </div>
 <br />
-<script>
-var date=new Date();
-if(date.getTime()>1541001599000){ //later than DDL
-  document.getElementById("reg-iframe").style.display="none";
-  document.getElementById("reg-late").style.display="block";
-}
-// FIXME: jump on iOS because of bad logic of WebKit and WKWebView
-else if(/iPhone OS/i.test(navigator.userAgent)){
-  location=document.querySelector("iframe").getAttribute("src");
-}
-</script>
