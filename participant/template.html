@@ -22,7 +22,7 @@
             <h1 class="mdui-typo-headline" id="title">人大附中第十六届歌舞嘉年华·缘</h1>
             <div class="mdui-tab mdui-tab-full-width" id="top-nav">
               <a href="/" class="mdui-ripple">首页</a>
-              <a href="/register/" class="mdui-ripple">报名</a>
+              <a href="/participant/" class="mdui-ripple">选手</a>
               <a href="/dayi/" class="mdui-ripple">答疑</a>
               <!--a href="/test/" class="mdui-ripple">测试</a-->
             </div>
@@ -33,15 +33,15 @@
     <img src="/img/participant/{{imgid}}.jpg" />
 	<div class="mdui-card-media-covered">
       <div class="mdui-typo-headline mdui-card-primary-title">{{name}}</div>
-	  <div class="mdui-card-primary-subtitle">{{class}}</div>
+	  <div class="mdui-card-primary-subtitle">{{class}} 参赛项目:{{typename}}</div>
 	</div>
   </div>
   <div class="mdui-card-content">
-    <h2 class="mdui-typo-title">选手介绍</h2>
+    <h2 class="mdui-typo-title" id="intro">选手介绍</h2>
 	<div class="mdui-typo-body-1">
 	  {{intro}}
 	</div>
-	<h2 class="mdui-typo-title">视频</h2>
+	<h2 class="mdui-typo-title" id="video">视频</h2>
 	{{video}}
   </div>
 </div>

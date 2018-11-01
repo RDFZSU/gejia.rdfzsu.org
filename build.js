@@ -1,6 +1,6 @@
 var fs=require("fs");
 var template=require("./template");
-var files="index.origin.html|test/index.origin.html|register/index.origin.html|participant/template.origin.html".split("|");
+var files="index.origin.html|test/index.origin.html|register/index.origin.html|participant/template.origin.html|participant/index.origin.html".split("|");
 var htmlTemplate=fs.readFileSync(__dirname+"/template.html").toString();
 
 for (var i = 0; i < files.length; i++) {

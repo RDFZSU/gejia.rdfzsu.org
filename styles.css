@@ -161,3 +161,11 @@ img.about{
   padding-top:10px;
   padding-bottom:10px;
 }
+
+#main{
+  width:100% !important;
+}
+
+.participant{
+  padding:4px !important;
+}

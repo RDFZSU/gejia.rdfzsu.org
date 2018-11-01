@@ -1,4 +1,4 @@
-module.exports=function processTemplate(str,obj){
+function processTemplate(str,obj){
 	var st=/{{[a-zA-Z0-9]*}}/gi;
 	var res="";
 	var comp;
@@ -16,3 +16,4 @@ module.exports=function processTemplate(str,obj){
 	res+=str.substring(last,str.length);
 	return res;
 }
+if(typeof module!="undefined") module.exports=processTemplate;
