@@ -1,9 +1,19 @@
 选手
 <br />
-<div class="mdui-card card">
+<div class="mdui-card card center">
+  <div class="mdui-textfield left mdui-textfield-floating-label">
+    <i class="mdui-icon material-icons">search</i>
+    <label class="mdui-textfield-label">搜索……</label>
+    <input id="search" class="mdui-textfield-input" />
+    <div class="mdui-textfield-helper">暂不支持拼音搜索</div>
+  </div>
+  <a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme" onclick="rand()"><i class="mdui-icon material-icons">refresh</i> 换一批</a>
+  <br />
   <div id="main" class="mdui-grid-list mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3 mdui-row-lg-3 mdui-row-xl-3">
     <div class="mdui-spinner mdui-spinner-colorful"></div> 选手信息加载中……
   </div>
+  <br />
+  <a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme" onclick="rand()"><i class="mdui-icon material-icons">refresh</i> 换一批</a>
 </div>
 <script language="application/x-template" id="participant-template">
 <div class="mdui-col participant">
