@@ -1,6 +1,6 @@
 var http=require("http");
 var url=require("url");
-var template=require("./template");
+var template=require("@alan-liang/utils/template");
 var fs=require("fs");
 var mime=require("mime");
 

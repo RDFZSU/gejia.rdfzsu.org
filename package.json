@@ -10,6 +10,7 @@
   "author": "Alan-Liang",
   "license": "UNLICENSED",
   "dependencies": {
+    "@alan-liang/utils": "^0.1.1",
     "mime": "^2.3.1"
   }
 }

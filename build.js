@@ -1,5 +1,5 @@
 var fs=require("fs");
-var template=require("./template");
+var template=require("@alan-liang/utils/template");
 var files="index.origin.html|test/index.origin.html|register/index.origin.html|participant/template.origin.html|participant/index.origin.html|404.origin.html".split("|");
 var htmlTemplate=fs.readFileSync(__dirname+"/template.html").toString();
 
