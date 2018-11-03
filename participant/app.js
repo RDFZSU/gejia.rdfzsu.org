@@ -18,10 +18,7 @@ var setHtml=function(rand){
   $("#main").html(html);
 };
 
-var rand=function(){
-
-var $=mdui.JQ;
-function shuf(arr,count){
+function shuffle(arr,count){
   arr=arr.slice();
   count=count||arr.length;
   var res=[];
@@ -33,31 +30,60 @@ function shuf(arr,count){
   return res;
 }
 
-var load=function(data){
-  window.template=$("#participant-template").html();
-  window.names=data;
-  var rand=shuf(data,30);
-  setHtml(rand);
-};
-if(!window.names) $.ajax({
-  success:load,
-  url:"/participant/data.json",
-  dataType:"json"
-});
-else load(window.names);
-
-$("#search").on("keyup",function(){
-  var key=$("#search").val();
-  if(key=="") return rand();
-  var result=[];
-  var data=window.names;
+function genNames(data){
+  var names=window.names=[data];
+  var sing=names[1]=[];
+  var dance=names[2]=[];
   for(var i=0;i<data.length;i++){
-    if(data[i].name.indexOf(key)>-1) result.push(data[i]);
+    switch(parseInt(data[i].type)){
+      case 1:
+      case 2:
+      case 5:
+      sing.push(data[i]);
+      break;
+
+      case 3:
+      case 4:
+      dance.push(data[i]);
+    }
   }
-  if(result.length!=0) return setHtml(result);
-  else $("#main").html("无结果");
-});
+}
+
+var rand=function(){
+  var load=function(data){
+    window.template=$("#participant-template").html();
+    if(!window.names){
+      genNames(data);
+    }
+    data=window.names[new mdui.Tab($("#participant-selection")).activeIndex];
+    var rand=shuffle(data,30);
+    setHtml(rand);
+  };
+
+  if(!window.names) $.ajax({
+    success:load,
+    url:"/participant/data.json",
+    dataType:"json"
+  });
+  else load();
+
+  $("#search").on("keyup",function(){
+    var key=$("#search").val();
+    if(key=="") return rand();
+    var result=[];
+    var data=window.names[new mdui.Tab($("#participant-selection")).activeIndex];
+    for(var i=0;i<data.length;i++){
+      if(data[i].name.indexOf(key)>-1) result.push(data[i]);
+    }
+    if(result.length!=0) return setHtml(result);
+    else $("#main").html("无结果");
+  });
 
 };
 
-setTimeout(rand,100);
+window.onload=function(){
+  window.$=mdui.JQ;
+  var sel=$("#participant-selection");
+  sel.on("click",rand);
+  rand();
+};
