@@ -23,9 +23,9 @@ function shuffle(arr,count){
   count=count||arr.length;
   var res=[];
   for(;count>0;count--){
-    var id=parseInt(Math.random()*count);
-	res.push(arr[id]);
-	arr.splice(id,1);
+    var id=parseInt(Math.random()*arr.length);
+    res.push(arr[id]);
+    arr.splice(id,1);
   }
   return res;
 }
@@ -68,12 +68,14 @@ var rand=function(){
   else load();
 
   $("#search").on("keyup",function(){
-    var key=$("#search").val();
+    var key=$("#search").val().toLowerCase();
     if(key=="") return rand();
     var result=[];
     var data=window.names[new mdui.Tab($("#participant-selection")).activeIndex];
     for(var i=0;i<data.length;i++){
-      if(data[i].name.indexOf(key)>-1) result.push(data[i]);
+      if(data[i].name.toLowerCase().indexOf(key)>-1||
+         data[i].id.toLowerCase().indexOf(key)>-1)
+         result.push(data[i]);
     }
     if(result.length!=0) return setHtml(result);
     else $("#main").html("无结果");
