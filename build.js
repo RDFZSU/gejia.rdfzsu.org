@@ -26,5 +26,6 @@ for (var i = 0; i < files.length; i++) {
 }
 
 //build participants
-if(process.argv[1]=="--build-participants")
+if(process.argv[2]=="--build-participants")
   require("./participant/build");
+else console.log("[WARN] participants not building. use cli option `--build-participants` to build them.");
