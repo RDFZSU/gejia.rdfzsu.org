@@ -14,7 +14,7 @@ img{
 body{
   margin: 0px;
   background-color:#cccccc !important;
-  background-image: url(/img/background.jpg);
+  background-image: url(https://cdn.jsdelivr.net/gh/rdfzsu/gejia.rdfzsu.org/img/background.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

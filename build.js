@@ -26,4 +26,5 @@ for (var i = 0; i < files.length; i++) {
 }
 
 //build participants
-require("./participant/build");
+if(process.argv[1]=="--build-participants")
+  require("./participant/build");
