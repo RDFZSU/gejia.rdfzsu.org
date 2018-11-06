@@ -20,3 +20,4 @@ topNav.find("a").each((i,el) => {
                   el.getAttribute("data-href"));
 });
 $("#content").show();
+ 
