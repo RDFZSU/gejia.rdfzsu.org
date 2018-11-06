@@ -1,0 +1,24 @@
+时间线
+<br />
+<div id="timeline" class="mdui-card left">
+  <div>
+    <div class="mdui-tab mdui-tab-centered" mdui-tab>
+      <a href="#done" class="mdui-ripple">已完成</a>
+      <a href="#tbd" class="mdui-ripple">预告</a>
+    </div>
+    <div id="done">
+      <h1 class="mdui-typo-headline"><a href="#done">已完成</a></h1>
+      <hr />
+      {{done}}
+      <br />
+    </div>
+    <div id="tbd">
+      <h1 class="mdui-typo-headline"><a href="#tbd">预告</a></h1>
+      <hr />
+      {{undone}}
+    </div>
+  </div>
+</div>
+<br />
+<script src="/pagination.js"></script>
+<script>paginationTo(document.getElementById("timeline"));</script>

@@ -1,7 +1,10 @@
 var fs=require("fs");
 var template=require("@alan-liang/utils/template");
-var files="index.origin.html|test/index.origin.html|register/index.origin.html|participant/template.origin.html|participant/index.origin.html|404.origin.html".split("|");
+var files="index.origin.html|test/index.origin.html|register/index.origin.html|participant/template.origin.html|participant/index.origin.html|404.origin.html|timeline/index.origin.html".split("|");
 var htmlTemplate=fs.readFileSync(__dirname+"/template.html").toString();
+
+//build timeline first
+require("./timeline/build");
 
 for (var i = 0; i < files.length; i++) {
   var f=fs.readFileSync(__dirname+"/"+files[i]).toString();

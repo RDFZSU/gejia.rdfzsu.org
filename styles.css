@@ -165,3 +165,24 @@ img.about{
 .participant{
   padding:4px !important;
 }
+
+#timeline{
+  height: 100%;
+  padding-left:10px;
+}
+
+#timeline>div{
+  border-left: solid teal 6px;
+  padding: 10px;
+}
+
+#timeline hr{
+  margin-left: -26px;
+  margin-right: -10px;
+}
+
+#timeline h1>a{
+  color: teal;
+  font-weight: bold;
+  text-decoration: none;
+}
