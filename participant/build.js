@@ -3,11 +3,10 @@ var template=require("@alan-liang/utils/template");
 var htmlTemplate=fs.readFileSync(__dirname+"/template.html").toString();
 var files=fs.readFileSync(__dirname+"/data.json").toString();
 var types={
-  1:"歌赛(单人)",
-  2:"歌赛(团队)",
-  3:"舞赛(单人)",
-  4:"舞赛(团队)",
-  5:"Rap专场",
+  1:"歌赛（初中场）",
+  2:"歌赛（高中场）",
+  3:"歌赛（rap场）",
+  4:"舞赛",
   0:"未知"
 };
 files=JSON.parse(files);

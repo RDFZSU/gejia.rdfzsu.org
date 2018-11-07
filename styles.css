@@ -11,6 +11,18 @@ img{
   vertical-align: bottom;
 }
 
+body:before{ /* FIXME： see https://blog.csdn.net/u014477038/article/details/51682211 */
+  content: ' ';
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(https://cdn.jsdelivr.net/gh/rdfzsu/gejia.rdfzsu.org/img/background.jpg) center 0 no-repeat;
+  background-size: cover;
+}
+
 body{
   margin: 0px;
   background-color:#cccccc !important;
@@ -185,4 +197,22 @@ img.about{
   color: teal;
   font-weight: bold;
   text-decoration: none;
+}
+
+.mdui-grid-tile-actions{
+  max-height: none !important;
+  font-weight: bold;
+}
+
+.mdui-typo-headline{
+  font-size: 20px !important;
+}
+
+.mdui-card-media-covered .mdui-card-primary-subtitle{
+  opacity: 1 !important;
+}
+
+span.mdui-card-primary-subtitle,
+span.mdui-card-primary-title{
+  display: inline !important;
 }
