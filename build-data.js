@@ -23,10 +23,25 @@ data.forEach(el=>{
     hasimg:el[11],
     video:el[12]||"暂无视频",
     date:[el[13],el[14]],
+    "with":el[16]==" "?"单人参赛":el[16]||"单人参赛",
     done:el[15]
   });
 });
 
+//cut down size of browser-fetched data.min.json
+var forBrowser=[];
+obj.forEach(el=>{
+  forBrowser.push({
+    name:el.name,
+    "class":el.class,
+    type:el.type,
+    id:el.id,
+    hasimg:el.hasimg,
+    "with":el["with"]
+  });
+});
+
 fs.writeFileSync(__dirname+"/participant/data.json",JSON.stringify(obj));
+fs.writeFileSync(__dirname+"/participant/data.min.json",JSON.stringify(forBrowser));
 
 console.log("data.json generated.");

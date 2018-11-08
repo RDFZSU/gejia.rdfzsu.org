@@ -53,32 +53,33 @@ var rand=function(){
     window.template=$("#participant-template").html();
     if(!window.names){
       genNames(data);
+      $("#search").off("keyup");
+      $("#search").on("keyup",function(){
+        var key=$("#search").val().toLowerCase();
+        if(key=="") return rand();
+        var result=[];
+        var data=window.names[new mdui.Tab($("#participant-selection")).activeIndex];
+        for(var i=0;i<data.length;i++){
+          if(data[i].name.toLowerCase().indexOf(key)>-1||
+             data[i].id.toLowerCase().indexOf(key)>-1||
+             data[i]["with"].toLowerCase().indexOf(key)>-1)
+             result.push(data[i]);
+        }
+        if(result.length!=0) return setHtml(result);
+        else $("#main").html("无结果");
+      });
     }
     data=window.names[new mdui.Tab($("#participant-selection")).activeIndex];
-    var rand=shuffle(data,30);
-    setHtml(rand);
+    var random=shuffle(data,30);
+    setHtml(random);
   };
 
   if(!window.names) $.ajax({
     success:load,
-    url:"/participant/data.json",
+    url:"/participant/data.min.json",
     dataType:"json"
   });
   else load();
-
-  $("#search").on("keyup",function(){
-    var key=$("#search").val().toLowerCase();
-    if(key=="") return rand();
-    var result=[];
-    var data=window.names[new mdui.Tab($("#participant-selection")).activeIndex];
-    for(var i=0;i<data.length;i++){
-      if(data[i].name.toLowerCase().indexOf(key)>-1||
-         data[i].id.toLowerCase().indexOf(key)>-1)
-         result.push(data[i]);
-    }
-    if(result.length!=0) return setHtml(result);
-    else $("#main").html("无结果");
-  });
 
 };
 

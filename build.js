@@ -1,6 +1,7 @@
 var fs=require("fs");
 var template=require("@alan-liang/utils/template");
-var files="index.origin.html|test/index.origin.html|register/index.origin.html|participant/template.origin.html|participant/index.origin.html|404.origin.html|timeline/index.origin.html".split("|");
+var files="index.origin.html|test/index.origin.html|register/index.origin.html|participant/template.origin.html|participant/index.origin.html|404.origin.html|timeline/index.origin.html|about/index.origin.html".split("|");
+var urls="|register/|participant/|timeline/|about/".split("|");
 var htmlTemplate=fs.readFileSync(__dirname+"/template.html").toString();
 
 //build data.json
@@ -35,3 +36,6 @@ for (var i = 0; i < files.length; i++) {
 if(process.argv[2]=="--build-participants")
   require("./participant/build");
 else console.log("[WARN] participants not building. use cli option `--build-participants` to build them.");
+
+//build sitemap
+require("./build-sitemap")(urls);

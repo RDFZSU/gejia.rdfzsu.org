@@ -9,7 +9,8 @@ topNav.find("a").each((i,el) => {
   var href=el.getAttribute("href");
   el.setAttribute("data-href",href);
   el.setAttribute("href","#content");
-  if(href==("/"+location.href.split("/")[3])){
+  var now="/"+location.href.split("/")[3];
+  if(href==now||href==(now+"/")){
     el.classList.add("mdui-tab-active");
     has=true;
   }
@@ -20,4 +21,3 @@ topNav.find("a").each((i,el) => {
                   el.getAttribute("data-href"));
 });
 $("#content").show();
- 
