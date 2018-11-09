@@ -37,11 +37,10 @@ function genNames(data){
     switch(parseInt(data[i].type)){
       case 1:
       case 2:
-      case 5:
+      case 3:
       sing.push(data[i]);
       break;
 
-      case 3:
       case 4:
       dance.push(data[i]);
     }
@@ -70,7 +69,7 @@ var rand=function(){
       });
     }
     data=window.names[new mdui.Tab($("#participant-selection")).activeIndex];
-    var random=shuffle(data,30);
+    var random=shuffle(data,18);
     setHtml(random);
   };
 
