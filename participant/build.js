@@ -15,6 +15,8 @@ for (var i = 0; i < files.length; i++) {
   var d=files[i];
   d.imgid=d.hasimg?d.id:"default";
   d.typename=types[d.type]||types[0];
+  d.dateString=`${d.date[0]}月${d.date[1]}日`;
+  d.idString=d.id[0];
   var s=template(htmlTemplate,d);
   var note=`<!--
   DO NOT MODIFY
