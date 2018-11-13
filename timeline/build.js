@@ -27,14 +27,14 @@ data.forEach(el=>{
 var isSinger=el=>el.type==1||el.type==2||el.type==5;
 var isDancer=el=>el.type==3||el.type==4;
 
-var processDates=dates_=>{
+var processDates=(dates_,reverse)=>{
   var html="";
   var dates__=[];
   for(var date in dates_){
     dates__.push([date,dates_[date],dates_[date][0].date]);
   }
   dates__=dates__.sort((a,b)=>{
-    return (a[2][0]-b[2][0])*1000+(a[2][1]-b[2][1]);
+    return (reverse?-1:1)*((a[2][0]-b[2][0])*1000+(a[2][1]-b[2][1]));
   });
   dates__.forEach(el=>{
     var dates=el[1];
@@ -71,8 +71,8 @@ var processDates=dates_=>{
 };
 
 fs.writeFileSync(__dirname+"/index.origin.html",template(htmlTemplate,{
-  done:processDates(datesDone),
-  undone:processDates(datesUndone)
+  done:processDates(datesDone,true),
+  undone:processDates(datesUndone,false)
 }));
 
 console.log("timeline generated.");
