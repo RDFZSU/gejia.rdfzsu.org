@@ -17,6 +17,10 @@ for (var i = 0; i < files.length; i++) {
   d.typename=types[d.type]||types[0];
   d.dateString=`${d.date[0]}月${d.date[1]}日`;
   d.idString=d.id[0];
+  // FIXME:
+  if(d.intro!="暂无介绍"){
+    d.intro=`《${d.intro}》`;
+  }
   var s=template(htmlTemplate,d);
   var note=`<!--
   DO NOT MODIFY
