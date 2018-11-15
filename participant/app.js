@@ -15,6 +15,7 @@ var setHtml=function(rand){
     html+=processTemplate(template,el);
   }
   $("#main").html(html);
+  paginationTo(document.getElementById("main"));
 };
 
 function shuffle(arr,count){
