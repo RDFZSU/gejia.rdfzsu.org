@@ -24,8 +24,8 @@ data.forEach(el=>{
   dates[date].push(el);
 });
 
-var isSinger=el=>el.type==1||el.type==2||el.type==5;
-var isDancer=el=>el.type==3||el.type==4;
+var isSinger=el=>el.type==1||el.type==2||el.type==3;
+var isDancer=el=>el.type==4;
 
 var processDates=(dates_,reverse)=>{
   var html="";
