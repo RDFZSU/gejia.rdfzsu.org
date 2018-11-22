@@ -3,19 +3,24 @@ var types={
   2:"歌赛（高中场）",
   3:"歌赛（rap场）",
   4:"舞赛",
+  5:"歌赛 Battle战",
   0:"未知"
 };
 
-var setHtml=function(rand){
+var setHtml=function(rand,sel){
   var html="";
   for(var i=0;i<rand.length;i++){
     var el=rand[i];
     el.imgid=el.hasimg?el.id:"default";
     el.typename=types[el.type]||types[0];
-    html+=processTemplate(template,el);
+    if(el.isBattle){
+      html+=processTemplate(battleTemplate,el);
+    }else{
+      html+=processTemplate(template,el);
+    }
   }
-  $("#main").html(html);
-  paginationTo(document.getElementById("main"));
+  $(sel).html(html);
+  paginationTo(document.querySelector(sel));
 };
 
 function shuffle(arr,count){
@@ -32,25 +37,33 @@ function shuffle(arr,count){
 
 function genNames(data){
   var names=window.names=[data];
+  names.battle=[];
   var sing=names[1]=[];
   var dance=names[2]=[];
+  var round1=[];
   for(var i=0;i<data.length;i++){
     switch(parseInt(data[i].type)){
       case 1:
       case 2:
       case 3:
       sing.push(data[i]);
+      round1.push(data[i]);
       break;
 
       case 4:
       dance.push(data[i]);
+      round1.push(data[i]);
     }
+    if(data[i].isBattle) names.battle.push(data[i]);
   }
+  names[0]=round1;
+
 }
 
 var rand=function(){
   var load=function(data){
     window.template=$("#participant-template").html();
+    window.battleTemplate=$("#battle-template").html();
     if(!window.names){
       genNames(data);
       $("#search").off("keyup");
@@ -60,18 +73,23 @@ var rand=function(){
         var result=[];
         var data=window.names[new mdui.Tab($("#participant-selection")).activeIndex];
         for(var i=0;i<data.length;i++){
+          if(data[i].isBattle) continue;
           if(data[i].name.toLowerCase().indexOf(key)>-1||
              data[i].id.toLowerCase().indexOf(key)>-1||
              data[i]["with"].toLowerCase().indexOf(key)>-1)
              result.push(data[i]);
         }
-        if(result.length!=0) return setHtml(result);
+        if(result.length!=0) return setHtml(result,"#main");
         else $("#main").html("无结果");
       });
     }
     data=window.names[new mdui.Tab($("#participant-selection")).activeIndex];
     var random=shuffle(data,18);
-    setHtml(random);
+    setHtml(random,"#main");
+
+    // TODO: process battle
+    var battle=window.names.battle;
+    setHtml(battle,"#battle");
   };
 
   if(!window.names) $.ajax({
@@ -88,4 +106,9 @@ window.onload=function(){
   var sel=$("#participant-selection");
   sel.on("click",rand);
   rand();
+  $("#round-selection").on("change.mdui.tab",function(){
+    setTimeout(function(){
+      new mdui.Tab($("#participant-selection")).handleUpdate();
+    },0);
+  });
 };

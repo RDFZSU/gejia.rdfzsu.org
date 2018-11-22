@@ -4,6 +4,7 @@ var template=require("@alan-liang/utils/template");
 var htmlTemplate=fs.readFileSync(__dirname+"/index.origin.origin.html").toString();
 var participantTemplate=fs.readFileSync(__dirname+"/participant-template.html").toString();
 var participantsTemplate=fs.readFileSync(__dirname+"/participants-template.html").toString();
+var battlerTemplate=fs.readFileSync(__dirname+"/battler-template.html").toString();
 var data=fs.readFileSync(__dirname+"/../participant/data.json").toString();
 data=JSON.parse(data);
 
@@ -12,6 +13,7 @@ var types={
   2:"歌赛（高中场）",
   3:"歌赛（rap场）",
   4:"舞赛",
+  5:"歌赛 Battle战",
   0:"未知"
 };
 
@@ -40,12 +42,13 @@ var processDates=(dates_,reverse)=>{
     var dates=el[1];
     var date=el[0];
     if(!dates) return console.log(el);
-    var singers=[],dancers=[];
+    var singers=[],dancers=[],battlers=[];
     dates.forEach(el=>{
       el.imgid=el.hasimg?el.id:"default";
       el.typename=types[el.type]||types[0];
       if(isSinger(el)) singers.push(el);
       else if(isDancer(el)) dancers.push(el);
+      else if(el.isBattle) battlers.push(el);
     });
     // TODO:
     if(singers.length>0){
@@ -65,6 +68,14 @@ var processDates=(dates_,reverse)=>{
         dancersHtml+=template(participantTemplate,el);
       });
       html+=template(participantsTemplate,{html:dancersHtml});
+    }
+    if(battlers.length>0){
+      html+=`<h2 class="mdui-typo-subheading">${date}:Battle战</h2><hr />`;
+      var battlersHtml="";
+      battlers.forEach((el)=>{
+        battlersHtml+=template(battlerTemplate,el);
+      });
+      html+=template(participantsTemplate,{html:battlersHtml});
     }
   });
   return html;

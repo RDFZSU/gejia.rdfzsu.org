@@ -9,7 +9,8 @@ var types={
   "歌赛（初中场）":1,
   "歌赛（高中场）":2,
   "歌赛（rap场）":3,
-  "舞赛":4
+  "舞赛":4,
+  "歌赛（Battle战）":5
 };
 
 var getType=el=>types[el[2]]||0;
@@ -24,7 +25,8 @@ data.forEach(el=>{
     video:el[12]||"暂无视频",
     date:[el[13],el[14]],
     "with":el[16]==" "?"单人参赛":el[16]||"单人参赛",
-    done:el[15]
+    done:el[15],
+    isBattle:el[17]
   });
 });
 
@@ -37,7 +39,8 @@ obj.forEach(el=>{
     type:el.type,
     id:el.id,
     hasimg:el.hasimg,
-    "with":el["with"]
+    "with":el["with"],
+    isBattle:el.isBattle
   });
 });
 

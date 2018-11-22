@@ -74,6 +74,12 @@ body{
   height:24px;
 }
 
+.copy-icon{
+  width:20px;
+  height:20px;
+  padding:2px;
+}
+
 #bottom-nav{
   padding-bottom:20px;
   padding-top:20px;
