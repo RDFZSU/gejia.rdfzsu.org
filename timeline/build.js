@@ -4,7 +4,7 @@ var template=require("@alan-liang/utils/template");
 var htmlTemplate=fs.readFileSync(__dirname+"/index.origin.origin.html").toString();
 var participantTemplate=fs.readFileSync(__dirname+"/participant-template.html").toString();
 var participantsTemplate=fs.readFileSync(__dirname+"/participants-template.html").toString();
-var battlerTemplate=fs.readFileSync(__dirname+"/battler-template.html").toString();
+var round2Template=fs.readFileSync(__dirname+"/round2-template.html").toString();
 var data=fs.readFileSync(__dirname+"/../participant/data.json").toString();
 data=JSON.parse(data);
 
@@ -14,6 +14,7 @@ var types={
   3:"歌赛（rap场）",
   4:"舞赛",
   5:"歌赛 Battle战",
+  6:"歌赛 车轮战",
   0:"未知"
 };
 
@@ -42,15 +43,16 @@ var processDates=(dates_,reverse)=>{
     var dates=el[1];
     var date=el[0];
     if(!dates) return console.log(el);
-    var singers=[],dancers=[],battlers=[];
+    var singers=[],dancers=[],battlers=[],wheels=[];
     dates.forEach(el=>{
       el.imgid=el.hasimg?el.id:"default";
       el.typename=types[el.type]||types[0];
       if(isSinger(el)) singers.push(el);
       else if(isDancer(el)) dancers.push(el);
-      else if(el.isBattle) battlers.push(el);
+      else if(el.type===5) battlers.push(el);
+      else if(el.type===6) wheels.push(el);
     });
-    // TODO:
+    // FIXME: Copy-and-Paste code leads to inreadability
     if(singers.length>0){
       // FIXME: Use templates!!!
       html+=`<h2 class="mdui-typo-subheading">${date}:歌赛</h2><hr />`;
@@ -73,9 +75,17 @@ var processDates=(dates_,reverse)=>{
       html+=`<h2 class="mdui-typo-subheading">${date}:Battle战</h2><hr />`;
       var battlersHtml="";
       battlers.forEach((el)=>{
-        battlersHtml+=template(battlerTemplate,el);
+        battlersHtml+=template(round2Template,el);
       });
       html+=template(participantsTemplate,{html:battlersHtml});
+    }
+    if(wheels.length>0){
+      html+=`<h2 class="mdui-typo-subheading">${date}:车轮战</h2><hr />`;
+      var wheelsHtml="";
+      wheels.forEach((el)=>{
+        wheelsHtml+=template(round2Template,el);
+      });
+      html+=template(participantsTemplate,{html:wheelsHtml});
     }
   });
   return html;

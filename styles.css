@@ -227,3 +227,7 @@ span.mdui-card-primary-title{
 .video>iframe{
   width:100%;
 }
+
+[hidden]{
+  display: none;
+}

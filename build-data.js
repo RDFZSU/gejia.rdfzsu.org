@@ -10,7 +10,8 @@ var types={
   "歌赛（高中场）":2,
   "歌赛（rap场）":3,
   "舞赛":4,
-  "歌赛（Battle战）":5
+  "歌赛（Battle战）":5,
+  "歌赛（车轮战）":6
 };
 
 var getType=el=>types[el[2]]||0;
@@ -26,7 +27,7 @@ data.forEach(el=>{
     date:[el[13],el[14]],
     "with":el[16]==" "?"单人参赛":el[16]||"单人参赛",
     done:el[15],
-    isBattle:el[17]
+    isRound2:el[17]
   });
 });
 
@@ -40,7 +41,7 @@ obj.forEach(el=>{
     id:el.id,
     hasimg:el.hasimg,
     "with":el["with"],
-    isBattle:el.isBattle
+    isRound2:el.isRound2
   });
 });
 

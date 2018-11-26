@@ -8,6 +8,7 @@ var types={
   3:"歌赛（rap场）",
   4:"舞赛",
   5:"歌赛 Battle战",
+  6:"歌赛 车轮战",
   0:"未知"
 };
 files=JSON.parse(files);
@@ -17,7 +18,7 @@ for (var i = 0; i < files.length; i++) {
   d.imgid=d.hasimg?d.id:"default";
   d.typename=types[d.type]||types[0];
   d.dateString=`${d.date[0]}月${d.date[1]}日`;
-  d.idString=d.isBattle?"Battle战":d.id[0];
+  d.idString=d.isRound2?d.type===5?"Battle战":"车轮战":d.id[0];
   // FIXME:
   if(d.intro!="暂无介绍"){
     d.intro=`《${d.intro}》`;

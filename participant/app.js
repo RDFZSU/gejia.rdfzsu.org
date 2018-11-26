@@ -4,6 +4,7 @@ var types={
   3:"歌赛（rap场）",
   4:"舞赛",
   5:"歌赛 Battle战",
+  6:"歌赛 车轮战",
   0:"未知"
 };
 
@@ -13,8 +14,8 @@ var setHtml=function(rand,sel){
     var el=rand[i];
     el.imgid=el.hasimg?el.id:"default";
     el.typename=types[el.type]||types[0];
-    if(el.isBattle){
-      html+=processTemplate(battleTemplate,el);
+    if(el.isRound2){
+      html+=processTemplate(round2Template,el);
     }else{
       html+=processTemplate(template,el);
     }
@@ -38,6 +39,7 @@ function shuffle(arr,count){
 function genNames(data){
   var names=window.names=[data];
   names.battle=[];
+  names.wheel=[];
   var sing=names[1]=[];
   var dance=names[2]=[];
   var round1=[];
@@ -54,7 +56,8 @@ function genNames(data){
       dance.push(data[i]);
       round1.push(data[i]);
     }
-    if(data[i].isBattle) names.battle.push(data[i]);
+    if(data[i].type===5) names.battle.push(data[i]);
+    if(data[i].type===6) names.wheel.push(data[i]);
   }
   names[0]=round1;
 
@@ -63,7 +66,7 @@ function genNames(data){
 var rand=function(){
   var load=function(data){
     window.template=$("#participant-template").html();
-    window.battleTemplate=$("#battle-template").html();
+    window.round2Template=$("#round2-template").html();
     if(!window.names){
       genNames(data);
       $("#search").off("keyup");
@@ -73,7 +76,7 @@ var rand=function(){
         var result=[];
         var data=window.names[new mdui.Tab($("#participant-selection")).activeIndex];
         for(var i=0;i<data.length;i++){
-          if(data[i].isBattle) continue;
+          if(data[i].isRound2) continue;
           if(data[i].name.toLowerCase().indexOf(key)>-1||
              data[i].id.toLowerCase().indexOf(key)>-1||
              data[i]["with"].toLowerCase().indexOf(key)>-1)
@@ -87,9 +90,10 @@ var rand=function(){
     var random=shuffle(data,18);
     setHtml(random,"#main");
 
-    // TODO: process battle
+
     var battle=window.names.battle;
     setHtml(battle,"#battle");
+    setHtml(window.names.wheel,"#wheel");
   };
 
   if(!window.names) $.ajax({
