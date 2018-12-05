@@ -1,79 +1,43 @@
 首页
 <br />
 <div class="mdui-card card center">
-  <h1 class="mdui-typo-headline">Battle战即将开始</h1>
-  <a href="/participant/" class="mdui-btn mdui-btn-raised mdui-color-theme">点此查看选手</a>
-  <h1 class="mdui-typo-headline">歌赛普通场初赛结果</h1>
-  <style>
-  a[link]{
-    text-decoration: none;
-    color: #000;
-    margin-left: 3px;
-    margin-right: 3px;
-    position: relative;
-    display: inline-block;
+  <h1 class="mdui-typo-headline">12月10日|决赛之夜</h1>
+  <div id="main" class="mdui-grid-list mdui-row-xs-2 mdui-row-sm-3 mdui-row-md-4 mdui-row-lg-4 mdui-row-xl-4">
+    <div class="mdui-spinner mdui-spinner-colorful"></div> 选手信息加载中……
+  </div>
+  <script language="application/x-template" id="participant-template">
+    <div class="mdui-card mdui-col mdui-grid-tile">
+      <a href="/participant/{{id}}/">
+        <div class="mdui-card-media">
+          <img alt="{{name}}" data-src="https://keeer-1.oss-cn-beijing.aliyuncs.com/img/participant/{{id}}.jpg-finalp" />
+        </div>
+      </a>
+    </div>
+  </script>
+  <script src="/pagination.js"></script>
+  <script src="/node_modules/@alan-liang/utils/template.js"></script>
+  <script>
+  var finals=JSON.parse('{{finals}}');
+  function shuffle(arr,count){
+    arr=arr.slice();
+    count=count||arr.length;
+    var res=[];
+    for(;count>0;count--){
+      var id=parseInt(Math.random()*arr.length);
+      res.push(arr[id]);
+      arr.splice(id,1);
+    }
+    return res;
   }
-  a[link]::before{
-    position: absolute;
-    top: auto;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    content: ' ';
-    background-color: #000;
-    transition: bottom 0.3s ease;
+  finals=shuffle(finals);
+  var main=document.getElementById("main");
+  var template=document.getElementById("participant-template").innerHTML;
+  var html="";
+  for(var i=0;i<finals.length;i++){
+    html+=processTemplate(template,finals[i]);
   }
-  a[link]:hover::before{
-    bottom:-4px;
-  }
-  li{
-    list-style: none;
-    margin-bottom: 5px;
-  }
-  ul{
-    margin: 0;
-    padding: 0;
-  }
-  </style>
-  <h3 class="mdui-typo-subheading">歌赛初中场</h3>
-  <ul>
-    <li><a link href="https://gejia.rdfzsu.org/participant/A9/" target="_top">A9 蒋梓煊</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/B5/" target="_top">B5 蔡雨桐</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/B9/" target="_top">B9 刘子怡</a></li>
-  </ul>
-  <h3 class="mdui-typo-subheading">歌赛高中场</h3>
-  <ul>
-    <li><a link href="https://gejia.rdfzsu.org/participant/C17/" target="_top">C17 许澈</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/C13/" target="_top">C13 李健实</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/C11/" target="_top">C11 张晨跃</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/C18/" target="_top">C18 李明道</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/D14/" target="_top">D14 周阳</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/D7/" target="_top">D7 王楚怡</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/D20/" target="_top">D20 冯伊承</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/D19/" target="_top">D19 王星瀚</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/E16/" target="_top">E16 胡博洋</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/J13/" target="_top">J13 梁依晨</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/E15/" target="_top">E15 任佳锐</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/F14/" target="_top">F14 任宸扬</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/F20/" target="_top">F20 汪姝和</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/F11/" target="_top">F11 王嘉骐</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/F2/" target="_top">F2 彭洁茜</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/G1/" target="_top">G1 吕殊蕴</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/G5/" target="_top">G5 刘书言</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/G17/" target="_top">G17 张译丹</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/H9/" target="_top">H9 李可桢</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/H5/" target="_top">H5 贾云皓</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/H4/" target="_top">H4 马奕卓然</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/I10/" target="_top">I10 王月</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/I1/" target="_top">I1 陶楚妤</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/I3/" target="_top">I3 徐佳意</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/I6/" target="_top">I6 薛可欣</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/I12/" target="_top">I12 王笑阳</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/J11/" target="_top">J11 曾爱</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/J7/" target="_top">J7 田葆同</a></li>
-    <li><a link href="https://gejia.rdfzsu.org/participant/J12/" target="_top">J12 王敏行</a></li>
-  </ul>
-  以上排名不分先后。祝贺以上选手顺利进入复赛！
+  main.innerHTML=html;
+  paginationTo(main,4/3);
+  </script>
 </div>
 <br />

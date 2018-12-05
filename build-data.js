@@ -11,7 +11,8 @@ var types={
   "歌赛（rap场）":3,
   "舞赛":4,
   "歌赛（Battle战）":5,
-  "歌赛（车轮战）":6
+  "歌赛（车轮战）":6,
+  "总决赛":7
 };
 
 var getType=el=>types[el[2]]||0;
@@ -32,7 +33,7 @@ data.forEach(el=>{
 });
 
 //cut down size of browser-fetched data.min.json
-var forBrowser=[];
+var forBrowser=[],finals=[];
 obj.forEach(el=>{
   forBrowser.push({
     name:el.name,
@@ -43,9 +44,17 @@ obj.forEach(el=>{
     "with":el["with"],
     isRound2:el.isRound2
   });
+  if(el.type===7 /* final */){
+    finals.push({
+      id:el.id,
+      name:el.name
+    });
+  }
 });
 
 fs.writeFileSync(__dirname+"/participant/data.json",JSON.stringify(obj));
 fs.writeFileSync(__dirname+"/participant/data.min.json",JSON.stringify(forBrowser));
 
 console.log("data.json generated.");
+
+module.exports=JSON.stringify(finals);

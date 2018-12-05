@@ -15,6 +15,7 @@ var types={
   4:"舞赛",
   5:"歌赛 Battle战",
   6:"歌赛 车轮战",
+  7:"总决赛",
   0:"未知"
 };
 
@@ -43,7 +44,7 @@ var processDates=(dates_,reverse)=>{
     var dates=el[1];
     var date=el[0];
     if(!dates) return console.log(el);
-    var singers=[],dancers=[],battlers=[],wheels=[];
+    var singers=[],dancers=[],battlers=[],wheels=[],finals=[];
     dates.forEach(el=>{
       el.imgid=el.hasimg?el.id:"default";
       el.typename=types[el.type]||types[0];
@@ -51,6 +52,7 @@ var processDates=(dates_,reverse)=>{
       else if(isDancer(el)) dancers.push(el);
       else if(el.type===5) battlers.push(el);
       else if(el.type===6) wheels.push(el);
+      else if(el.type===7) finals.push(el);
     });
     // FIXME: Copy-and-Paste code leads to inreadability
     if(singers.length>0){
@@ -86,6 +88,14 @@ var processDates=(dates_,reverse)=>{
         wheelsHtml+=template(round2Template,el);
       });
       html+=template(participantsTemplate,{html:wheelsHtml});
+    }
+    if(finals.length>0){
+      html+=`<h2 class="mdui-typo-subheading">${date}:总决赛</h2><hr />`;
+      var finalsHtml="";
+      finals.forEach((el)=>{
+        finalsHtml+=template(round2Template,el);
+      });
+      html+=template(participantsTemplate,{html:finalsHtml});
     }
   });
   return html;

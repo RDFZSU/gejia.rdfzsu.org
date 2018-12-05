@@ -9,18 +9,19 @@ var types={
   4:"舞赛",
   5:"歌赛 Battle战",
   6:"歌赛 车轮战",
+  7:"总决赛",
   0:"未知"
 };
 files=JSON.parse(files);
 
 for (var i = 0; i < files.length; i++) {
   var d=files[i];
-  d.imgid=d.hasimg?d.id:"default";
+  d.imgid=d.hasimg?d.id:d.type===7?d.id:"default";
   d.typename=types[d.type]||types[0];
   d.dateString=`${d.date[0]}月${d.date[1]}日`;
-  d.idString=d.isRound2?d.type===5?"Battle战":"车轮战":d.id[0];
+  d.idString=d.isRound2?d.type===5?"Battle战":d.type===7?"总决赛":"车轮战":d.id[0];
   // FIXME:
-  if(d.intro!="暂无介绍"){
+  if(d.intro!="暂无介绍"&&d.type!=7 /* not finals */){
     d.intro=`《${d.intro}》`;
   }
   var s=template(htmlTemplate,d);

@@ -1,4 +1,5 @@
-function paginationTo(el){
+function paginationTo(el,ratio){
+  if(!ratio) ratio=9/16;
   var images=(el||document).getElementsByTagName("img");
   var onscroll=function(){
     for(var i=0;i<images.length;i++){
@@ -16,7 +17,7 @@ function paginationTo(el){
   var onresize=function(){
     for (var i = 0; i < images.length; i++) {
       var width=window.getComputedStyle(images[i]).width;
-      var height=parseFloat(width)*9/16;
+      var height=parseFloat(width)*ratio;
       images[i].style.height=height+"px";
     }
   }

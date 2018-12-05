@@ -5,13 +5,19 @@ var urls="|register/|participant/|timeline/|about/".split("|");
 var htmlTemplate=fs.readFileSync(__dirname+"/template.html").toString();
 
 //build data.json
-require("./build-data");
+var finals=require("./build-data");
 
 //build timeline first
 require("./timeline/build");
 
 for (var i = 0; i < files.length; i++) {
   var f=fs.readFileSync(__dirname+"/"+files[i]).toString();
+  //generate index
+  if(files[i]==="index.origin.html"){
+    f=template(f,{
+      finals
+    });
+  }
   var lines=f.split("\n");
   var title=lines.shift().replace("\r","");
   var content=lines.join("\n");
